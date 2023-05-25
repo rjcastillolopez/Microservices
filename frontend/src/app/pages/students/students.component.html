@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row text center mt-5">
+        <div class="col">
+            <h2>CRUD Students</h2>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <div class="row inputs">
+                <!-- Name -->
+                <div class="form-group col-md-3 mt-2">
+                    <label for="name" class="form-label fw-bold">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required [(ngModel)]="student.name">
+                </div>
+                <!-- Last Name -->
+                <div class="form-group col-md-3 mt-2">
+                    <label for="lastName" class="form-label fw-bold">Last Name</label>
+                    <input type="text" name="lastname" class="form-control" id="lastName" required [(ngModel)]="student.lastname">
+                </div>
+                <!-- Student code -->
+                <div class="form-group col-md-3 mt-2">
+                    <label for="studentCode" class="form-label fw-bold">Student Code</label>
+                    <input type="text" name="studentCode" class="form-control" id="studentCode" required [(ngModel)]="student.studentCode">
+                </div>
+                <!-- Birthdate -->
+                <div class="form-group col-md-3 mt-2">
+                    <label for="birthdate" class="form-label fw-bold">Birthdate</label>
+                    <input type="date" name="birthdate" class="form-control" id="birthdate" required [(ngModel)]="student.birthdate">
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="btn btn-success mt-3" style="margin-right: 10px;" [disabled]="form.invalid">Agregar</button>
+                <button type="button" class="btn btn-primary mt-3" style="margin-right: 10px;" (click)="onUpdate(form)">Actualizar</button>
+                <button type="button" class="btn btn-danger mt-3" style="margin-right: 10px;" (click)="onDelete()">Eliminar</button>
+                <button type="button" class="btn btn-warning mt-3" style="margin-right: 10px;" (click)="onClear()">Limpiar</button>
+            </div>
+        </form>
+    </div>
+    <!-- Table of students, if click on a row, the data will be loaded in the form above. -->
+    <div class="col mt-5">
+        <table class="table table-striped" style="text-align: center; width: 100%;">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:80px;">Seleccionar</th>
+                    <th scope="col" style="width:250px;">Name</th>
+                    <th scope="col" style="width:250px;">Last Name</th>
+                    <th scope="col" style="width:180px;">Student Code</th>
+                    <th scope="col" style="width:180px;">Birthdate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students">
+                    <th scope="row"><input type="radio" name="student" (click)="onSelect(student)"></th>
+                    <td>{{student.name}}</td>
+                    <td>{{student.lastname}}</td>
+                    <td>{{student.studentCode}}</td>
+                    <td>{{student.birthdate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
