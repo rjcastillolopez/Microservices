@@ -1,0 +1,77 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  proxy:
+    container_name: proxy_container
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+    networks:
+      - public
+    restart: unless-stopped
+
+  frontend:
+    container_name: frontend_container
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 4200:80
+    depends_on:
+      - backend
+    networks:
+      - public
+    restart: unless-stopped
+
+  backend:
+    container_name: backend_container
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - DB_HOST=database
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+    secrets:
+      - mssql-db-password
+    ports:
+      - 5000:5000
+    depends_on:
+      - database
+    networks:
+      - public
+      - private
+    restart: unless-stopped
+
+  database:
+    container_name: mssql_container
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD_FILE=/run/secrets/mssql-db-password
+      - MSSQL_PID=Express
+    secrets:
+      - mssql-db-password
+    ports:
+      - 1433:1433
+    networks:
+      - private
+    restart: always
+
+networks:
+  public:
+    driver: bridge
+  private:
+    driver: bridge
+
+secrets:
+  mssql-db-password:
+    file: password.txt
+    # external: true # use first: docker secret

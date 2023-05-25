@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row text center mt-5">
+        <div class="col">
+            <h2>CRUD Relational Table</h2>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <div class="row inputs">
+                <!-- Id -->
+                <div class="form-group col-md-3 mt-2">
+                    <label for="id" class="form-label fw-bold">Id</label>
+                    <input type="number" name="id" class="form-control" id="id" required [(ngModel)]="object.id">
+                </div>
+                <!-- Name -->
+                <div class="form-group col-md-3 mt-2">
+                    <label for="name" class="form-label fw-bold">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required [(ngModel)]="object.name">
+                </div>
+                <!-- Value -->
+                <div class="form-group col-md-3 mt-2">
+                    <label for="value" class="form-label fw-bold">Value</label>
+                    <input type="text" name="value" class="form-control" id="value" required [(ngModel)]="object.value">
+                </div>
+                <!-- ParentId -->
+                <div class="form-group col-md-3 mt-2">
+                    <label for="parentId" class="form-label fw-bold">Parent Id</label>
+                    <input type="number" name="parentId" class="form-control" id="parentId" required [(ngModel)]="object.parentId">
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="btn btn-success mt-3" style="margin-right: 10px;" [disabled]="form.invalid">Agregar</button>
+                <button type="button" class="btn btn-primary mt-3" style="margin-right: 10px;" (click)="onUpdate(form)">Actualizar</button>
+                <button type="button" class="btn btn-danger mt-3" style="margin-right: 10px;" (click)="onDelete()">Eliminar</button>
+                <button type="button" class="btn btn-warning mt-3" style="margin-right: 10px;" (click)="onClear()">Limpiar</button>
+            </div>
+        </form>
+    </div>
+    <!-- Table of objects -->
+    <div class="col mt-5">
+        <table class="table table-striped" style="text-align: center; width: 100%;">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:100px;">Seleccionar</th>
+                    <th scope="col" style="width:100px;">Id</th>
+                    <th scope="col" style="width:150px;">Name</th>
+                    <th scope="col" style="width:150px;">Value</th>
+                    <th scope="col" style="width:100px;">Parent Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let object of objects">
+                    <th scope="row"><input type="radio" name="object" (click)="onSelect(object)"></th>
+                    <td>{{object.id}}</td>
+                    <td>{{object.name}}</td>
+                    <td>{{object.value}}</td>
+                    <td>{{object.parentId}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
