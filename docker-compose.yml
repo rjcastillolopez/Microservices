@@ -35,12 +35,10 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
-      - DB_HOST=database
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-    secrets:
-      - mssql-db-password
+      - DB_HOST=mssql_database
+      - DB_NAME=${MSSQL_DB_NAME}
+      - DB_USER=${MSSQL_DB_USER}
+      - DB_PASSWORD=${MSSQL_DB_PASSWORD}
     ports:
       - 5000:5000
     depends_on:
@@ -50,7 +48,7 @@ services:
       - private
     restart: unless-stopped
 
-  database:
+  mssql_database:
     container_name: mssql_container
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
     environment:

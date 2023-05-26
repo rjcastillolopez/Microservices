@@ -29,6 +29,8 @@ string dbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost";
 string dbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "TestInnovar";
 string dbUser = Environment.GetEnvironmentVariable("DB_USER") ?? "sa";
 string dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "P@ssw0rd";
+
+// Connection string for MS SQL Server
 var connectionString = $"Server={dbHost};Database={dbName};User Id={dbUser};Password={dbPassword};TrustServerCertificate=True";
 
 builder.Services.AddDbContext<Context>(opt =>
