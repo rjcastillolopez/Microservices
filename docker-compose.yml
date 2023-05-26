@@ -42,7 +42,7 @@ services:
     ports:
       - 5000:5000
     depends_on:
-      - database
+      - mssql_database
     networks:
       - public
       - private

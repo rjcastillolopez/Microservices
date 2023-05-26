@@ -5,7 +5,7 @@ GET http://localhost:80/api/Student/GetStudents HTTP/1.1
 GET http://localhost:80/api/Student/GetStudentById/1 HTTP/1.1
 
 ### Get student by student code
-GET http://localhost:80/api/Student/GetStudentByCode/S003 HTTP/1.1
+GET http://localhost:80/api/Student/GetStudentByCode/S001 HTTP/1.1
 
 ### Get student id
 GET http://localhost:80/api/Student/GetStudentId/S002 HTTP/1.1

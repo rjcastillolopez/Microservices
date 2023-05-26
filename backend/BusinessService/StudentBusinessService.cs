@@ -34,7 +34,7 @@ namespace backend.BusinessService
 
         public Student CreateStudent(Student student)
         {
-            return _studentDataService.CreteStudent(student);
+            return _studentDataService.CreateStudent(student);
         }
 
         public Student UpdateStudent(Student student)

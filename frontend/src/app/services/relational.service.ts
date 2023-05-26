@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class RelationalService {
-    private url = 'http://localhost:5271/api/NoRelational';  
+    private url = 'http://localhost:80/api/NoRelational';  
 
     constructor(
         private http: HttpClient 
