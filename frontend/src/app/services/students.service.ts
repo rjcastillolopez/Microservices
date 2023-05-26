@@ -29,6 +29,7 @@ export class StudentsService {
 
     // Add student
     addStudent(name: string, lastname: string, studentCode: string, birthdate: string): Observable<any> {    
+        console.log(name, lastname, studentCode, birthdate);
         return this.http.post(this.url + '/CreateStudent', {
             name: name,
             lastName: lastname,

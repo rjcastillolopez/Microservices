@@ -55,7 +55,7 @@ export class StudentsComponent {
             console.log('Formulario válido');
             this.studentService.getStudentByCode(this.student.studentCode).subscribe(
                 (res: any) => {
-                    if (res.length > 0) {
+                    if (res) {
                         alert('El código de estudiante ya existe');
                     } else {
                         this.studentService.addStudent(this.student.name, this.student.lastname, this.student.studentCode, this.student.birthdate).subscribe(
@@ -70,7 +70,7 @@ export class StudentsComponent {
                             }
                         );
                     }
-                }
+                },
             );
         }
     }

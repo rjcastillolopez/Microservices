@@ -39,7 +39,7 @@ namespace backend.DataService
             return 0;
         }
 
-        public Student CreteStudent(Student student){
+        public Student CreateStudent(Student student){
             _context.Students.Add(student);
             _context.SaveChanges();
             return student;
