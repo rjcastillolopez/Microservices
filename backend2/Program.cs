@@ -26,12 +26,11 @@ builder.Services.AddCors(options =>
 // Database Context Dependency Injection
 var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbName = Environment.GetEnvironmentVariable("DB_NAME");
-var dbUser = Environment.GetEnvironmentVariable("DB_USER");
-var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+var dbPassword = Environment.GetEnvironmentVariable("DB_ROOT_PASSWORD");
 var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
 
 // Connection string for MySQL
-var connectionString = $"Server={dbHost};Port={dbPort};Database={dbName};Uid={dbUser};Pwd={dbPassword};";
+var connectionString = $"server={dbHost};port={dbPort};database={dbName};user=root;password={dbPassword};";
 
 builder.Services.AddDbContext<Context>(opt => 
     opt.UseMySQL(connectionString)
