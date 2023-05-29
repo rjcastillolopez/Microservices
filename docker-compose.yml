@@ -68,18 +68,19 @@ services:
     build:
       context: ./backend2
       dockerfile: Dockerfile
-    ports:
-      - 5001:5001
     environment:
       - DB_HOST=mysql_database
       - DB_NAME=${MYSQL_DB_NAME}
       - DB_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - DB_PORT=3306
+    ports:
+      - 5001:5001
+    depends_on:
+      - mysql_database 
     networks:
       - public
       - private2
-    depends_on:
-      - mysql_database 
+    restart: unless-stopped
 
   mysql_database:
     container_name: mysql_container
@@ -91,6 +92,7 @@ services:
       - 3306:3306
     networks:
       - private2
+    restart: always
 
 networks:
   public:
