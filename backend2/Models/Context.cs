@@ -10,10 +10,10 @@ namespace backend2.Models
 
             try
             {
-                var databaseCreator = this.Database.GetService<IRelationalDatabaseCreator>() as RelationalDatabaseCreator;
+                var databaseCreator = this.Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
                 if (databaseCreator != null)
                 {
-                    if (!databaseCreator.Exists())
+                    if (!databaseCreator.CanConnect())
                     {
                         databaseCreator.Create();
                     }
