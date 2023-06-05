@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend2.Models
 {
-    [Table("NoRelational")]
+    [Table("NoRelational", Schema="dbo")]
     public class NoRelational
     {  
         // No incremental key

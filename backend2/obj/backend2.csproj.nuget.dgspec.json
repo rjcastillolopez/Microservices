@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Innovar\\backend2\\backend2.csproj": {}
+    "C:\\Users\\Ricardo\\Desktop\\backend2\\backend2.csproj": {}
   },
   "projects": {
-    "C:\\Innovar\\backend2\\backend2.csproj": {
+    "C:\\Users\\Ricardo\\Desktop\\backend2\\backend2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Innovar\\backend2\\backend2.csproj",
+        "projectUniqueName": "C:\\Users\\Ricardo\\Desktop\\backend2\\backend2.csproj",
         "projectName": "backend2",
-        "projectPath": "C:\\Innovar\\backend2\\backend2.csproj",
-        "packagesPath": "C:\\Users\\Dev02\\.nuget\\packages\\",
-        "outputPath": "C:\\Innovar\\backend2\\obj\\",
+        "projectPath": "C:\\Users\\Ricardo\\Desktop\\backend2\\backend2.csproj",
+        "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ricardo\\Desktop\\backend2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dev02\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
