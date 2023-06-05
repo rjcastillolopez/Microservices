@@ -30,7 +30,7 @@ var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
 
 // Connection string for MySQL
-var connectionString = $"server={dbHost};port={dbPort};database={dbName};user=root;pwd={dbPassword};";
+var connectionString = $"server={dbHost};port={dbPort};database={dbName};user=root;password={dbPassword};";
 
 builder.Services.AddDbContext<Context>(opt => 
     opt.UseMySQL(connectionString)
