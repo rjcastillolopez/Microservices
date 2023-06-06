@@ -1,0 +1,6 @@
+# k8s-angular-frontend:v1  
+./frontend> docker build -t k8s-angular-frontend:v1 .
+# k8s-dotnet-backend:v1
+./backend> docker build -t k8s-dotnet-backend:v1
+# k8s-dotnet-backend:v2
+./backend2> docker build -t k8s-dotnet-backend2:v1

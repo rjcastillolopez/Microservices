@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: ClusterIP # default
+  selector:
+    component: backend
+  ports:
+  - port: 5000
+    targetPort: 5000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: backend
+  template:
+    metadata:
+      labels:
+        component: backend
+    spec:
+      containers:
+      - name: dotnet-backend
+        image: k8s-dotnet-backend:v1
+        #imagePullPolicy: Never  # prevent pulling image from docker hub
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "128m"
+          limits:
+            memory: "64Mi"
+            cpu: "128m"
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DB_HOST
+          value: mssql-service
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: server-config
+              key: MSSQL_DB_NAME
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: server-config
+              key: MSSQL_DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: MSSQL_DB_PASSWORD
