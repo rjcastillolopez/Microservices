@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: server-config
+  namespace: default
+data:
+  # MS SQL Server
+  MSSQL_DB_NAME: db_scores
+  MSSQL_DB_USER: sa
+  # MySQL
+  MYSQL_DB_NAME: db_norelational
+ 

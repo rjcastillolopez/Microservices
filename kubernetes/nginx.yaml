@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-proxy
+spec:
+  type: LoadBalancer
+  selector:
+    app: server-proxy
+  ports:
+  - port: 80
+    targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-proxy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: server-proxy
+  template:
+    metadata:
+      labels:
+        app: server-proxy
+    spec:
+      containers:
+      - name: server-proxy
+        image: k8s-server-proxy
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "64Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 3000

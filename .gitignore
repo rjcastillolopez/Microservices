@@ -45,3 +45,6 @@ Thumbs.db
 .env
 .env.*
 password.txt
+
+# k8s files
+/kubernetes/secrets.yaml
